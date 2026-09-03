@@ -7,7 +7,7 @@ void exec3 (){
 	float reais, cota;
 		printf("insira a cotação e o valor: ");
 		scanf("%f %f", &cota, &reais);
-		printf("Os %f reais sao %f trumps", reais, (reais, cota));
+		printf("Os %f reais sao %f trumps", reais, (reais/cota));
 	
 }
 
