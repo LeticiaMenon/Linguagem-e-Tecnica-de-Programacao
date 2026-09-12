@@ -1,0 +1,51 @@
+include <stdio.h>
+#include <stdlib.h>
+
+float calc_inss(float salario){
+	
+	if(salario<= 1412.00) return salario*0.075;
+	else if(salario<= 2666.68) return salario*0.09;
+	else if(salario<= 4000.00) return salario*0.12;
+	else return salario*0.14;
+	
+}
+
+float calc_irpf(float salario)
+{
+	
+	if (salario<= 2259.20) return salario;
+	else if(salario<= 2826.65) return salario*0.075;
+	else if(salario<= 3751.05) return salario*0.15;
+	else if(salario<= 4664.68) return salario*0.225;
+	else return salario*0.275;
+}
+
+int main(int argc, char *argv[]) {
+	
+	float salario, desconto1, desconto2, deducao, horasv, horast, calctotal;
+	scanf("%f", &salario);
+	desconto1 = calc_inss(salario);
+	printf("%f || %f", desconto1, calc_inss(salario));
+	
+	desconto2 = calc_irpf(salario) + desconto1;
+	salario -= desconto2;
+	printf("%f || %f", desconto2, salario);
+	
+	printf("\nDigite o valor da hora trabalhada e a quantidade trabalhada no mes: \n");
+	scanf("%f, %f", &horasv, &horast);
+	
+	calctotal = (horasv*horast);
+	
+	printf("==============================================================\n");
+	printf("RECIBO DE PAGAMENTO DE SALARIO (CONTRA-CHEQUE)\n");
+	printf("==============================================================\n");
+	printf("Salário Bruto (Horas x Valor): R$ %f\n", calctotal);
+	printf("(-) Desconto INSS: R$ %f\n", desconto1);
+	printf("(-) Desconto IRPF: R$ %f\n", salario);
+	printf("--------------------------------------------------------------\n");
+	printf(" LIQUIDO A RECEBER: R$ %f\n", calctotal);
+	printf("==============================================================");
+	
+	
+	return 0;
+}
